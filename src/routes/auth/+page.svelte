@@ -19,6 +19,7 @@
 	import Spinner from '$lib/components/common/Spinner.svelte';
 	import OnBoarding from '$lib/components/OnBoarding.svelte';
 	import SensitiveInput from '$lib/components/common/SensitiveInput.svelte';
+	import RegistrationFooter from '$lib/components/RegistrationFooter.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -556,3 +557,4 @@
 		{/if}
 	{/if}
 </div>
+<RegistrationFooter />
