@@ -1,32 +1,41 @@
 <script>
-  import { onMount } from 'svelte';
-  
-  let registrationContent = '';
-  
-  onMount(async () => {
-    try {
-      const response = await fetch('/registration.html');
-      if (response.ok) {
-        registrationContent = await response.text();
-      }
-    } catch (error) {
-    }
-  });
+	import { onMount } from 'svelte';
+	
+	let registrationContent = '';
+	let isLoading = true;
+	let hasError = false;
+
+	onMount(async () => {
+		try {
+			const response = await fetch('/external-static/registration.html');
+			if (response.ok) {
+				registrationContent = await response.text();
+			} else {
+				hasError = true;
+			}
+		} catch (error) {
+			console.log('Registration info not found:', error);
+			hasError = true;
+		} finally {
+			isLoading = false;
+		}
+	});
 </script>
 
-{#if registrationContent}
-  <div class="registration-footer">
-    {@html registrationContent}
-  </div>
+{#if !isLoading && !hasError && registrationContent}
+	<div class="registration-info mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+		{@html registrationContent}
+	</div>
 {/if}
 
 <style>
-  .registration-footer {
-    margin-top: 2rem;
-    padding: 1rem;
-    text-align: center;
-    color: #666;
-    font-size: 0.875rem;
-    border-top: 1px solid #e2e8f0;
-  }
+	.registration-info :global(a) {
+		color: inherit;
+		text-decoration: underline;
+	}
+	
+	.registration-info :global(a:hover) {
+		opacity: 0.8;
+	}
 </style>
+
