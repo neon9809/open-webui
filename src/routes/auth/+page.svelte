@@ -528,6 +528,7 @@
 								</div>
 							{/if}
 						</div>
+						<RegistrationInfo />
 						{#if $config?.metadata?.login_footer}
 							<div class="max-w-3xl mx-auto">
 								<div class="mt-2 text-[0.7rem] text-gray-500 dark:text-gray-400 marked">
@@ -556,6 +557,5 @@
 			</div>
 		{/if}
 	{/if}
-	<RegistrationInfo />
 </div>
 
