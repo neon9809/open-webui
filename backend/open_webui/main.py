@@ -477,6 +477,10 @@ from open_webui.utils.redis import get_sentinels_from_env
 
 from open_webui.constants import ERROR_MESSAGES
 
+from open_webui.config import (
+    # ... 其他导入
+    EXTERNAL_STATIC_DIR,
+)
 
 if SAFE_MODE:
     print("SAFE MODE ENABLED")
