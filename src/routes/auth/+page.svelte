@@ -553,7 +553,7 @@
 						/>
 					</div>
 				</div>
-				<RegistrationFooter />
+				<RegistrationInfo />
 			</div>
 		{/if}
 	{/if}
