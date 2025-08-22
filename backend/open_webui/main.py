@@ -1939,7 +1939,8 @@ async def healthcheck_with_db():
 
 
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
+app.mount("/external-static", StaticFiles(directory=EXTERNAL_STATIC_DIR), name="external-static")
+app.mount("/cache", StaticFiles(directory=CACHE_DIR), name="cache")
 
 @app.get("/cache/{path:path}")
 async def serve_cache_file(
