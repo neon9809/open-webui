@@ -308,6 +308,20 @@ JWT_EXPIRES_IN = PersistentConfig(
     "JWT_EXPIRES_IN", "auth.jwt_expiry", os.environ.get("JWT_EXPIRES_IN", "-1")
 )
 
+
+####################################
+# Static DIR
+####################################
+
+# Support external static files mount
+EXTERNAL_STATIC_DIR = Path(os.getenv("EXTERNAL_STATIC_DIR", DATA_DIR / "static")).resolve()
+STATIC_DIR = Path(os.getenv("STATIC_DIR", OPEN_WEBUI_DIR / "static")).resolve()
+
+# Ensure external static directory exists
+EXTERNAL_STATIC_DIR.mkdir(parents=True, exist_ok=True)
+
+
+
 ####################################
 # OAuth config
 ####################################
