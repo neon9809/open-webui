@@ -156,7 +156,13 @@ COPY --chown=$UID:$GID --from=build /app/package.json /app/package.json
 # copy backend files
 COPY --chown=$UID:$GID ./backend .
 
+# create static directory for external files
+RUN mkdir -p /app/backend/data/static && chown -R $UID:$GID /app/backend/data/static
+
 EXPOSE 8080
+
+# Add volume for external static files
+VOLUME ["/app/backend/data/static"]
 
 HEALTHCHECK CMD curl --silent --fail http://localhost:${PORT:-8080}/health | jq -ne 'input.status == true' || exit 1
 
