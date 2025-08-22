@@ -7,7 +7,7 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch('/external-static/registration.html');
+			const response = await fetch('/app/backend/data/static/registration.html');
 			if (response.ok) {
 				registrationContent = await response.text();
 			} else {
