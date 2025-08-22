@@ -56,6 +56,3 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             BUILD_HASH=${{ github.sha }}
-
-      - name: Show published tags
-        run: echo "Published tags: ${{ steps.meta.outputs.tags }}"
