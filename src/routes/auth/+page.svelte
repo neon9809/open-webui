@@ -553,9 +553,9 @@
 						/>
 					</div>
 				</div>
-				<RegistrationInfo />
 			</div>
 		{/if}
 	{/if}
+	<RegistrationInfo />
 </div>
 
