@@ -20,6 +20,26 @@
 	import OnBoarding from '$lib/components/OnBoarding.svelte';
 	import SensitiveInput from '$lib/components/common/SensitiveInput.svelte';
 
+	let registrationContent = '';
+	let registrationLoaded = false;
+	let registrationError = false;
+
+	async function loadRegistrationInfo() {
+    	try {
+        const response = await fetch('/static/registration.html');
+        	if (response.ok) {
+            	registrationContent = await response.text();
+            	registrationLoaded = true;
+        	} else {
+            console.warn('Registration file not found or not accessible');
+            registrationError = true;
+        }
+    	} catch (error) {
+        	console.error('Failed to load registration info:', error);
+        	registrationError = true;
+    	}
+	}
+
 	const i18n = getContext('i18n');
 
 	let loaded = false;
@@ -164,6 +184,7 @@
 		} else {
 			onboarding = $config?.onboarding ?? false;
 		}
+		loadRegistrationInfo();
 	});
 </script>
 
@@ -537,6 +558,13 @@
 									{@html DOMPurify.sanitize(marked($config?.metadata?.login_footer))}
 								</div>
 							</div>
+						{/if}
+						{#if registrationLoaded && registrationContent}
+    						<div class="registration-info mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+        						<div class="text-center text-sm text-gray-600 dark:text-gray-400">
+            						{@html registrationContent}
+        						</div>
+    						</div>
 						{/if}
 					</div>
 				{/if}

@@ -160,6 +160,8 @@ COPY --chown=$UID:$GID --from=build /app/build /app/build
 COPY --chown=$UID:$GID --from=build /app/CHANGELOG.md /app/CHANGELOG.md
 COPY --chown=$UID:$GID --from=build /app/package.json /app/package.json
 
+RUN mkdir -p /app/backend/static
+
 # copy backend files
 COPY --chown=$UID:$GID ./backend .
 
