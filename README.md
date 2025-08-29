@@ -38,11 +38,11 @@
         volumes:
           - ./registration.html:/app/backend/open_webui/static/registration.html:ro
         ......
-    ```
+```
 4.  **运行**：构建自定义 Docker 镜像并启动服务：
 ```bash
     docker-compose up -d
-    ```
+```
 
 # 注意 ⚠️
 商业用途需购买商业许可证！请联系 [Open-WebUI](https://docs.openwebui.com/enterprise) 进行进一步洽谈。
